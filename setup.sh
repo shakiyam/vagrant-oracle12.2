@@ -1,6 +1,6 @@
 #!/bin/sh
 
-script_dir=/vagrant
+script_dir="$(cd "$(dirname "$0")" && pwd)"
 
 # Install rlwrap
 yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm

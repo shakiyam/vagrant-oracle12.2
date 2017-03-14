@@ -6,5 +6,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.memory = 1536
   end
   config.vm.network 'forwarded_port', guest: 1521, host: 1521
-  config.vm.provision 'shell', path: 'setup.sh'
+  config.vm.provision 'shell', path: 'provision.sh'
 end

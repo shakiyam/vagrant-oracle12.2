@@ -76,7 +76,7 @@ SHOW CON_NAME
 PDBに接続し、サンプル表を確認する。
 
 ```
-sqlplus system/oracle@/pdb1
+sqlplus system/oracle@localhost/pdb1
 SHOW CON_NAME
 SELECT * FROM hr.employees WHERE rownum <= 10;
 ```
