@@ -1,9 +1,20 @@
-#!/bin/sh
+#!/bin/bash
+set -eu -o pipefail
 
 script_dir="$(cd "$(dirname "$0")" && pwd)"
 
+# shellcheck disable=SC1091
+os_version=$(. /etc/os-release; echo "$VERSION")
+
 # Install rlwrap
-yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+case ${os_version%%.*} in
+  6)
+    yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+    ;;
+  7)
+    yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    ;;
+esac
 yum -y install rlwrap
 
 # Install Oracle Preinstallation RPM
