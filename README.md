@@ -83,7 +83,7 @@ SELECT * FROM hr.employees WHERE rownum <= 10;
 
 ## Known Issues ##
 
-Windows, Vagrant 1.9.2, Virtualbox 5.1.16という組み合わせで /sbin/mount.vboxsf: mounting failed with the error: No such file or directory というエラーが出る人は、VirtualBoxを5.1.14にダウングレードするか、C:\HashiCorp\Vagrant\embedded\gems\gems\vagrant-1.9.2\lib\vagrant\util\platform.rb の206行目を `"\\?\" + path.gsub("/", "\")` から  `path.gsub("/", "\")` に変更することで回避できます。
+Windows版のVirtualbox 5.1.16は共有フォルダに問題があります。VirtualBoxをアップグレードして下さい。
 
 参考: [Windows UNC path is crashing with \\\\?\\ prefix · Issue #8352 · mitchellh/vagrant](https://github.com/mitchellh/vagrant/issues/8352)
 
