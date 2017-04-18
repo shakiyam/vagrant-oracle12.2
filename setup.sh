@@ -37,7 +37,7 @@ cat <<EOT >> /home/oracle/.bash_profile
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=/u01/app/oracle/product/12.2.0.1/dbhome_1
 export ORACLE_SID=orcl
-export PATH=\$PATH:\$ORACLE_HOME/bin
+export PATH=\$PATH:\$ORACLE_HOME/bin:\$ORACLE_HOME/jdk/bin
 EOT
 
 # Set alias
