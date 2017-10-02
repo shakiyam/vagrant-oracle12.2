@@ -43,9 +43,8 @@ SET VAGRANT_NO_PROXY=localhost,127.0.0.1
 
 `vagrant up`を実行すると、内部的に以下が動く。
 
-* Oracle Linux 7.3のダウンロードと起動
+* Oracle Linux 7.4のダウンロードと起動
 * Oracle Preinstallation RPMのインストール
-* グループの作成
 * ディレクトリの作成
 * 環境変数の設定
 * oracleユーザーのパスワード設定
@@ -80,12 +79,6 @@ sqlplus system/oracle@localhost/pdb1
 SHOW CON_NAME
 SELECT * FROM hr.employees WHERE rownum <= 10;
 ```
-
-## Known Issues ##
-
-Windows版のVirtualbox 5.1.16は共有フォルダに問題があります。VirtualBoxをアップグレードして下さい。
-
-参考: [Windows UNC path is crashing with \\\\?\\ prefix · Issue #8352 · mitchellh/vagrant](https://github.com/mitchellh/vagrant/issues/8352)
 
 ## Author ##
 
