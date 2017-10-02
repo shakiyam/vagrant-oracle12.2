@@ -20,13 +20,6 @@ yum -y install rlwrap
 # Install Oracle Preinstallation RPM
 yum -y install oracle-database-server-12cR2-preinstall
 
-# Create Operating System Privileges Groups
-groupadd -g 54324 backupdba
-groupadd -g 54325 dgdba
-groupadd -g 54326 kmdba
-groupadd -g 54327 racdba
-usermod  -G dba,backupdba,dgdba,kmdba,racdba oracle
-
 # Create directories
 mkdir -p /u01/app/
 chown -R oracle:oinstall /u01/app/
