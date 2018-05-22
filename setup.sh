@@ -3,10 +3,19 @@ set -eu -o pipefail
 
 script_dir="$(cd "$(dirname "$0")" && pwd)"
 
-# shellcheck disable=SC1091
-os_version=$(. /etc/os-release; echo "$VERSION")
+# load environment variables from .env
+set -a
+# shellcheck source=.env
+. "$script_dir"/.env
+set +a
+
+# Install Mo
+curl -sSL https://git.io/get-mo -o /usr/local/bin/mo
+chmod +x /usr/local/bin/mo
 
 # Install rlwrap
+# shellcheck disable=SC1091
+os_version=$(. /etc/os-release; echo "$VERSION")
 case ${os_version%%.*} in
   6)
     yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
@@ -27,9 +36,9 @@ chmod -R 775 /u01/app/
 
 # Set environment variables
 cat <<EOT >> /home/oracle/.bash_profile
-export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=/u01/app/oracle/product/12.2.0.1/dbhome_1
-export ORACLE_SID=orcl
+export ORACLE_BASE=$ORACLE_BASE
+export ORACLE_HOME=$ORACLE_HOME
+export ORACLE_SID=$ORACLE_SID
 export PATH=\$PATH:\$ORACLE_HOME/bin:\$ORACLE_HOME/jdk/bin
 EOT
 
@@ -39,9 +48,10 @@ alias sqlplus='rlwrap sqlplus'
 EOT
 
 # Set oracle password
-echo oracle:oracle | chpasswd
+echo oracle:"$ORACLE_PASSWORD" | chpasswd
 
 # Install database
+/usr/local/bin/mo "$script_dir"/db_install.rsp.mo >"$script_dir"/db_install.rsp
 su - oracle -c "$script_dir/database/runInstaller -silent -showProgress \
  -ignorePrereq  -waitforcompletion -responseFile $script_dir/db_install.rsp"
 /u01/app/oraInventory/orainstRoot.sh
@@ -52,6 +62,7 @@ su - oracle -c "netca -silent -responseFile \
  /u01/app/oracle/product/12.2.0.1/dbhome_1/assistants/netca/netca.rsp"
 
 # Create database
+/usr/local/bin/mo "$script_dir"/dbca.rsp.mo >"$script_dir"/dbca.rsp
 su - oracle -c "dbca -silent -createDatabase -responseFile $script_dir/dbca.rsp"
 
 # Shutdown database

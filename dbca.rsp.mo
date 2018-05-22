@@ -29,7 +29,7 @@ responseFileVersion=/oracle/assistants/rspfmt_dbca_response_schema_v12.2.0
 # Default value : None
 # Mandatory     : Yes
 #-----------------------------------------------------------------------------
-gdbName=orcl
+gdbName={{ORACLE_SID}}
 
 #-----------------------------------------------------------------------------
 # Name          : sid
@@ -39,7 +39,7 @@ gdbName=orcl
 # Default value : <db_name> specified in GDBNAME
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-sid=
+sid={{ORACLE_SID}}
 
 #-----------------------------------------------------------------------------
 # Name          : databaseConfigType
@@ -179,7 +179,7 @@ numberOfPDBs=1
 # Default value : None
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-pdbName=pdb1
+pdbName={{ORACLE_PDB}}
 
 #-----------------------------------------------------------------------------
 # Name          : useLocalUndoForPDBs 
@@ -200,7 +200,7 @@ useLocalUndoForPDBs=
 # Mandatory     : No
 #-----------------------------------------------------------------------------
 
-pdbAdminPassword=oracle
+pdbAdminPassword={{ORACLE_PASSWORD}}
 
 #-----------------------------------------------------------------------------
 # Name          : nodelist
@@ -230,7 +230,7 @@ templateName=General_Purpose.dbc
 # Default value : None
 # Mandatory     : Yes
 #-----------------------------------------------------------------------------
-sysPassword=oracle
+sysPassword={{ORACLE_PASSWORD}}
 
 #-----------------------------------------------------------------------------
 # Name          : systemPassword
@@ -240,7 +240,7 @@ sysPassword=oracle
 # Default value : None
 # Mandatory     : Yes
 #-----------------------------------------------------------------------------
-systemPassword=oracle
+systemPassword={{ORACLE_PASSWORD}}
 
 #-----------------------------------------------------------------------------
 # Name          : oracleHomeUserPassword
@@ -465,7 +465,7 @@ recoveryGroupName=
 # Default value : "US7ASCII"
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-characterSet=AL32UTF8
+characterSet={{ORACLE_CHARACTERSET}}
 
 #-----------------------------------------------------------------------------
 # Name          : nationalCharacterSet

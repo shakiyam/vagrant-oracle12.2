@@ -1,14 +1,27 @@
 vagrant-oracle12.2
 ==================
 
-Vagrant + Oracle Linux 7 + Oracle Database 12c Release 2 (12.2.0.1) Enterprise Editionシングル環境の簡易セットアップ。
+Vagrant + Oracle Linux 7 + Oracle Database 12c Release 2 (12.2.0.1) シングル環境の簡易セットアップ。
 
 ダウンロード
 ------------
 
-Oracle Database 12c Release 2 (12.2.0.1)のソフトウェアを[Oracle Technology Network](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)からダウンロードし、Vagrantfileと同じディレクトリに展開。展開すると"database"というサブディレクトリになるはず。
+Oracle Database 12c Release 2 (12.2.0.1)のソフトウェアを[Oracle Technology Network](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)からダウンロードし、Vagrantfileと同じディレクトリに展開。展開すると`database`というサブディレクトリになるはず。
 
 * linuxx64_12201_database.zip
+
+環境変数の設定
+--------------
+
+`dotenv.sample`というファイルを`.env`という名前のファイルにコピーし、必要に応じて内容を書き換える。
+
+* `ORACLE_BASE`: `/opt/oracle/`
+* `ORACLE_CHARACTERSET`: `AL32UTF8`
+* `ORACLE_EDITION`: `EE` | `SE2`
+* `ORACLE_HOME`: `/opt/oracle/product/12.2.0.1/dbhome_1`
+* `ORACLE_PASSWORD`: `oracle`
+* `ORACLE_PDB`: `pdb1`
+* `ORACLE_SID`: `orcl`
 
 Vagrant設定
 -----------

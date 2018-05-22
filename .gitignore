@@ -1,4 +1,6 @@
 .bundle
+.env
+.rsp
 .vagrant
 *.zip
 database
