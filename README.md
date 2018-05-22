@@ -1,7 +1,7 @@
 vagrant-oracle12.2
 ==================
 
-Vagrant + Oracle Linux 7.4 + Oracle Database 12c Release 2 (12.2.0.1) Enterprise Editionシングル環境の簡易セットアップ。
+Vagrant + Oracle Linux 7 + Oracle Database 12c Release 2 (12.2.0.1) Enterprise Editionシングル環境の簡易セットアップ。
 
 ダウンロード
 ------------
@@ -46,7 +46,7 @@ SET VAGRANT_NO_PROXY=localhost,127.0.0.1
 
 `vagrant up`を実行すると、内部的に以下が動く。
 
-* Oracle Linux 7.4のダウンロードと起動
+* Oracle Linux 7のダウンロードと起動
 * Oracle Preinstallation RPMのインストール
 * ディレクトリの作成
 * 環境変数の設定
