@@ -15,13 +15,15 @@ Oracle Database 12c Release 2 (12.2.0.1)のソフトウェアを[Oracle Technolo
 
 `dotenv.sample`というファイルを`.env`という名前のファイルにコピーし、必要に応じて内容を書き換える。
 
-* `ORACLE_BASE`: `/opt/oracle/`
-* `ORACLE_CHARACTERSET`: `AL32UTF8`
-* `ORACLE_EDITION`: `EE` | `SE2`
-* `ORACLE_HOME`: `/opt/oracle/product/12.2.0.1/dbhome_1`
-* `ORACLE_PASSWORD`: `oracle`
-* `ORACLE_PDB`: `pdb1`
-* `ORACLE_SID`: `orcl`
+```shell
+ORACLE_BASE=/u01/app/oracle
+ORACLE_CHARACTERSET=AL32UTF8
+ORACLE_EDITION=EE
+ORACLE_HOME=/u01/app/oracle/product/12.2.0.1/dbhome_1
+ORACLE_PASSWORD=oracle
+ORACLE_PDB=pdb1
+ORACLE_SID=orcl
+```
 
 Vagrant設定
 -----------
