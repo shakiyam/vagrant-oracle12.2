@@ -26,9 +26,6 @@ case ${os_version%%.*} in
   6)
     yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
     ;;
-  7)
-    yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-    ;;
 esac
 yum -y install rlwrap
 
