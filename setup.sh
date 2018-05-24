@@ -5,8 +5,14 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 
 # load environment variables from .env
 set -a
-# shellcheck source=.env
-. "$script_dir"/.env
+if [ -e "$script_dir"/.env ]; then
+  # shellcheck disable=SC1090
+  . "$script_dir"/.env
+else
+  echo 'Environment file .env not found. Therefore, dotenv.sample will be used.'
+  # shellcheck disable=SC1090
+  . "$script_dir"/dotenv.sample
+fi
 set +a
 
 # Install Mo
