@@ -56,13 +56,13 @@ echo oracle:"$ORACLE_PASSWORD" | chpasswd
 # Install database
 /usr/local/bin/mo "$script_dir"/db_install.rsp.mo >"$script_dir"/db_install.rsp
 su - oracle -c "$script_dir/database/runInstaller -silent -showProgress \
- -ignorePrereq  -waitforcompletion -responseFile $script_dir/db_install.rsp"
+  -ignorePrereq  -waitforcompletion -responseFile $script_dir/db_install.rsp"
 /u01/app/oraInventory/orainstRoot.sh
 /u01/app/oracle/product/12.2.0.1/dbhome_1/root.sh
 
 # Create listener using netca
 su - oracle -c "netca -silent -responseFile \
- /u01/app/oracle/product/12.2.0.1/dbhome_1/assistants/netca/netca.rsp"
+  /u01/app/oracle/product/12.2.0.1/dbhome_1/assistants/netca/netca.rsp"
 
 # Create database
 /usr/local/bin/mo "$script_dir"/dbca.rsp.mo >"$script_dir"/dbca.rsp
