@@ -27,7 +27,7 @@ case ${os_version%%.*} in
     yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
     ;;
 esac
-yum -y install rlwrap
+yum -y --enablerepo=epel install rlwrap
 
 # Install Oracle Preinstallation RPM
 yum -y install oracle-database-server-12cR2-preinstall
