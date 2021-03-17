@@ -6,9 +6,7 @@ Vagrant + Oracle Linux 7 + Oracle Database 12c Release 2 (12.2.0.1) シングル
 ダウンロード
 ------------
 
-Oracle Database 12c Release 2 (12.2.0.1)のソフトウェアを[Oracle Technology Network](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)からダウンロードし、Vagrantfileと同じディレクトリに展開。展開すると`database`というサブディレクトリになるはず。
-
-* linuxx64_12201_database.zip
+Oracle Database 12c Release 2 (12.2.0.1)のソフトウェアを入手し、Vagrantfileと同じディレクトリに展開。展開すると`database`というサブディレクトリになるはず。
 
 環境変数の設定
 --------------
@@ -107,4 +105,4 @@ Author
 License
 -------
 
-[MIT License](http://www.opensource.org/licenses/mit-license.php)
+[MIT License](https://opensource.org/licenses/MIT)
