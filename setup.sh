@@ -20,7 +20,13 @@ curl -sSL https://git.io/get-mo -o /usr/local/bin/mo
 chmod +x /usr/local/bin/mo
 
 # Install rlwrap
-yum -y --enablerepo=ol7_developer_EPEL install rlwrap
+# shellcheck disable=SC1091
+os_version=$(. /etc/os-release; echo "$VERSION")
+case ${os_version%%.*} in
+  7)
+    yum -y --enablerepo=ol7_developer_EPEL install rlwrap
+    ;;
+esac
 
 # Install Oracle Preinstallation RPM
 yum -y install oracle-database-server-12cR2-preinstall
