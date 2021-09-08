@@ -30,7 +30,7 @@ Vagrant configuration
 
 If you need to use a proxy, install vagrant-proxyconf and set environment variables for vagrant-proxyconf.
 
-### If the host is macOS or Linux ###
+### If your host is macOS or Linux ###
 
 ```console
 export http_proxy=http://proxy.example.com:80
@@ -43,7 +43,7 @@ export VAGRANT_FTP_PROXY=http://proxy.example.com:80
 export VAGRANT_NO_PROXY=localhost,127.0.0.1
 ```
 
-### If the host is Windows ###
+### If your host is Windows ###
 
 ```console
 SET http_proxy=http://proxy.example.com:80
@@ -62,7 +62,7 @@ Vagrant up
 When you run `vagrant up`, the following will work internally.
 
 * Download and boot Oracle Linux 7
-* Install the Oracle Preinstallation RPM
+* Install Oracle Preinstallation RPM
 * Create directories
 * Set environment variables
 * Set password for oracle user
@@ -83,7 +83,7 @@ Connect to the guest OS.
 vagrant ssh
 ```
 
-Connect to the CDB Root.
+Connect to CDB root and confirm the connection.
 
 ```console
 sudo su - oracle
@@ -91,7 +91,7 @@ sqlplus system/oracle
 SHOW CON_NAME
 ```
 
-Connect to a PDB and access the sample table.
+Connect to PDB, and access the sample table.
 
 ```console
 sqlplus system/oracle@localhost/pdb1
