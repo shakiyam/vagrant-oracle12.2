@@ -61,11 +61,12 @@ sqlplus system/oracle
 SHOW CON_NAME
 ```
 
-Connect to PDB, and access the sample table.
+Connect to PDB and confirm the connection. If you have sample schemas installed, browse to the sample table.
 
 ```console
 sqlplus system/oracle@localhost/pdb1
 SHOW CON_NAME
+-- If you have sample schemas installed
 SELECT * FROM hr.employees WHERE rownum <= 10;
 ```
 
