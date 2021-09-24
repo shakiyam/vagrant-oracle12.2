@@ -25,37 +25,6 @@ ORACLE_PDB=pdb1
 ORACLE_SID=orcl
 ```
 
-Vagrant configuration
----------------------
-
-If you need to use a proxy, install vagrant-proxyconf and set environment variables for vagrant-proxyconf.
-
-### If your host is macOS or Linux ###
-
-```console
-export http_proxy=http://proxy.example.com:80
-export https_proxy=http://proxy.example.com:80
-vagrant plugin install vagrant-proxyconf
-
-export VAGRANT_HTTP_PROXY=http://proxy.example.com:80
-export VAGRANT_HTTPS_PROXY=http://proxy.example.com:80
-export VAGRANT_FTP_PROXY=http://proxy.example.com:80
-export VAGRANT_NO_PROXY=localhost,127.0.0.1
-```
-
-### If your host is Windows ###
-
-```console
-SET http_proxy=http://proxy.example.com:80
-SET https_proxy=http://proxy.example.com:80
-vagrant plugin install vagrant-proxyconf
-
-SET VAGRANT_HTTP_PROXY=http://proxy.example.com:80
-SET VAGRANT_HTTPS_PROXY=http://proxy.example.com:80
-SET VAGRANT_FTP_PROXY=http://proxy.example.com:80
-SET VAGRANT_NO_PROXY=localhost,127.0.0.1
-```
-
 Vagrant up
 ----------
 
