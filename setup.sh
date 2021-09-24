@@ -16,6 +16,12 @@ else
 fi
 set +a
 
+readonly FILE="$SCRIPT_DIR/V839960-01.zip"
+if [[ ! -f "$FILE" ]]; then
+  echo "$FILE not found"
+  exit 1
+fi
+
 # Install Oracle Preinstallation RPM
 yum -y install oracle-database-server-12cR2-preinstall
 
@@ -52,13 +58,16 @@ TEMP_DIR=$(mktemp -d)
 readonly TEMP_DIR
 chmod 755 "$TEMP_DIR"
 
+# Unzip downloaded file
+unzip -d "$TEMP_DIR" "$FILE"
+
 # Install Mo (https://github.com/tests-always-included/mo)
 curl -sSL https://git.io/get-mo -o /usr/local/bin/mo
 chmod +x /usr/local/bin/mo
 
 # Install Oracle Database
 /usr/local/bin/mo "$SCRIPT_DIR"/db_install.rsp.mustache >"$TEMP_DIR"/db_install.rsp
-su - oracle -c "$SCRIPT_DIR/database/runInstaller -silent -showProgress \
+su - oracle -c "$TEMP_DIR/database/runInstaller -silent -showProgress \
   -ignorePrereq -waitforcompletion -responseFile $TEMP_DIR/db_install.rsp"
 "$ORACLE_BASE"/../oraInventory/orainstRoot.sh
 "$ORACLE_HOME"/root.sh
