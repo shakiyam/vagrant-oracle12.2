@@ -16,10 +16,6 @@ else
 fi
 set +a
 
-# Install Mo (https://github.com/tests-always-included/mo)
-curl -sSL https://git.io/get-mo -o /usr/local/bin/mo
-chmod +x /usr/local/bin/mo
-
 # Install Oracle Preinstallation RPM
 yum -y install oracle-database-server-12cR2-preinstall
 
@@ -52,23 +48,26 @@ esac
 # Set oracle password
 echo oracle:"$ORACLE_PASSWORD" | chpasswd
 
-# Install database
-/usr/local/bin/mo "$SCRIPT_DIR"/db_install.rsp.mustache >"$SCRIPT_DIR"/db_install.rsp
+TEMP_DIR=$(mktemp -d)
+readonly TEMP_DIR
+chmod 755 "$TEMP_DIR"
+
+# Install Mo (https://github.com/tests-always-included/mo)
+curl -sSL https://git.io/get-mo -o /usr/local/bin/mo
+chmod +x /usr/local/bin/mo
+
+# Install Oracle Database
+/usr/local/bin/mo "$SCRIPT_DIR"/db_install.rsp.mustache >"$TEMP_DIR"/db_install.rsp
 su - oracle -c "$SCRIPT_DIR/database/runInstaller -silent -showProgress \
-  -ignorePrereq  -waitforcompletion -responseFile $SCRIPT_DIR/db_install.rsp"
+  -ignorePrereq -waitforcompletion -responseFile $TEMP_DIR/db_install.rsp"
 "$ORACLE_BASE"/../oraInventory/orainstRoot.sh
 "$ORACLE_HOME"/root.sh
 
-# Create listener using netca
-su - oracle -c "netca -silent -responseFile \
-  $ORACLE_HOME/assistants/netca/netca.rsp"
+# Create a listener using netca
+su - oracle -c "netca -silent -responseFile $ORACLE_HOME/assistants/netca/netca.rsp"
 
-# Create database
-/usr/local/bin/mo "$SCRIPT_DIR"/dbca.rsp.mustache >"$SCRIPT_DIR"/dbca.rsp
-su - oracle -c "dbca -silent -createDatabase -responseFile $SCRIPT_DIR/dbca.rsp"
+# Create a database
+/usr/local/bin/mo "$SCRIPT_DIR"/dbca.rsp.mustache >"$TEMP_DIR"/dbca.rsp
+su - oracle -c "dbca -silent -createDatabase -responseFile $TEMP_DIR/dbca.rsp"
 
-# Shutdown database
-#echo "shutdown immediate" | su - oracle -c 'sqlplus "/ as sysdba"'
-
-# Stop listener
-#su - oracle -c "lsnrctl stop"
+rm -rf "$TEMP_DIR"
