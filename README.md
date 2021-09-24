@@ -10,8 +10,8 @@ Download the Oracle Database 12c Release 2 (12.2.0.1) software from [Oracle Soft
 
 * V839960-01.zip
 
-Set environment variables
--------------------------
+Configuration
+-------------
 
 Copy the file `dotenv.sample` to a file named `.env` and rewrite the contents as needed.
 
@@ -22,6 +22,7 @@ ORACLE_EDITION=EE
 ORACLE_HOME=/u01/app/oracle/product/12.2.0.1/dbhome_1
 ORACLE_PASSWORD=oracle
 ORACLE_PDB=pdb1
+ORACLE_SAMPLESCHEMA=TRUE
 ORACLE_SID=orcl
 ```
 
