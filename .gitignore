@@ -1,5 +1,3 @@
 .env
 .vagrant
-*.rsp
 *.zip
-database
