@@ -1,12 +1,11 @@
 oracle.install.responseFileVersion=/oracle/install/rspfmt_dbinstall_response_schema_v12.2.0
 oracle.install.option=INSTALL_DB_SWONLY
 UNIX_GROUP_NAME=oinstall
-INVENTORY_LOCATION=/u01/app/oraInventory
+INVENTORY_LOCATION={{ORACLE_BASE}}/../oraInventory
 ORACLE_HOME={{ORACLE_HOME}}
 ORACLE_BASE={{ORACLE_BASE}}
 oracle.install.db.InstallEdition={{ORACLE_EDITION}}
 oracle.install.db.OSDBA_GROUP=dba
-oracle.install.db.OSOPER_GROUP=oper
 oracle.install.db.OSBACKUPDBA_GROUP=backupdba
 oracle.install.db.OSDGDBA_GROUP=dgdba
 oracle.install.db.OSKMDBA_GROUP=kmdba
