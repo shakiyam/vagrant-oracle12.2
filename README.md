@@ -26,8 +26,8 @@ ORACLE_SAMPLESCHEMA=TRUE
 ORACLE_SID=orcl
 ```
 
-Vagrant up
-----------
+Provision
+---------
 
 When you run `vagrant up`, the following will work internally.
 
@@ -36,7 +36,7 @@ When you run `vagrant up`, the following will work internally.
 * Create directories
 * Set environment variables
 * Set password for oracle user
-* Unzip downloaded file
+* Unzip downloaded Oracle Database software
 * Install Oracle Database
 * Create a listener
 * Create a database
